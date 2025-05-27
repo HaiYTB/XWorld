@@ -33,6 +33,6 @@ def post_json(url: str, headers: dict, data: dict) -> dict:
 
     if res_json.get("code") != 0:
         message = res_json.get("message") or res_json.get("msg") or "Không rõ"
-        raise ConnectionError(f"Lỗi từ máy chủ: {message}")
+        return f"Lỗi từ máy chủ: {message}"
 
-    return res_json
+    return res_json["data"]

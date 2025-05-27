@@ -7,7 +7,6 @@ def user_info(user_id: str, user_secret_key: str):
     headers = build_headers(user_id, user_secret_key)
     data = {"user_id": user_id}
     result = post_json(url, headers, data)
-    result = result["data"]
     return result.get("sbt", {})
 
 
@@ -17,5 +16,4 @@ def wallet(user_id: str, user_secret_key: str):
     headers = build_headers(user_id, user_secret_key)
     data = {"source": "home", "user_id": user_id}
     result = post_json(url, headers, data)
-    result = result["data"]
     return result.get("user_asset", {})

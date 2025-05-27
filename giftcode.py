@@ -7,4 +7,4 @@ def redeem(user_id: str, user_secret_key: str, code: str):
     headers = build_headers(user_id, user_secret_key)
     data = {"code": code, "os_ver": "android", "platform": "h5"}
     result = post_json(url, headers, data)
-    return result["data"]
+    return result
