@@ -1,3 +1,4 @@
+import json
 import requests
 
 
@@ -31,7 +32,8 @@ def post_json(url: str, headers: dict, data: dict) -> dict:
     except Exception as e:
         raise RuntimeError(f"Lỗi khi gọi API: {e}")
 
-    if res_json.get("msg") != "ok":
-        raise ConnectionError("Lỗi từ máy chủ: " + res_json.get("msg", "Không rõ"))
+    if res_json.get("code") != 0:
+        message = res_json.get("message") or res_json.get("msg") or "Không rõ"
+        raise ConnectionError(f"Lỗi từ máy chủ: {message}")
 
-    return res_json["data"]
+    return res_json
