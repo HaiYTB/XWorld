@@ -1,4 +1,5 @@
 from account import user_info, wallet
+from giftcode import redeem
 
 
 def main():
@@ -9,6 +10,9 @@ def main():
 =============Tài Khoản=============
 1.1 Kiểm Tra Thông Tin
 1.2 Kiểm Tra Số Dư(Ví)
+
+=============Gift Codes=============
+2.1 Nhập Gift Code
 
 ===================================
 0. Thoát
@@ -21,6 +25,10 @@ Lựa Chọn(VD: Chọn Kiểm Tra Thông Tin Thì Ghi 1.1): """)
         elif choices == "1.2":
             balance = wallet(user_id=user_id, user_secret_key=user_secret_key)
             print(balance)
+        elif choices == "2.1":
+            code = input("Nhập GiftCode: ")
+            gift = redeem(user_id=user_id, user_secret_key=user_secret_key, code=code)
+            print(gift)
         elif choices == "0":
             break
         else:
